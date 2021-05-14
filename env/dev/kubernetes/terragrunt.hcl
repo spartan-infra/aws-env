@@ -25,6 +25,7 @@ locals {
   project_name        = local.global_vars.locals.project_name
   project_tags        = local.global_vars.locals.project_tags
   cluster_name        = local.global_vars.locals.eks_cluster_name
+  aws_cluster_version = "1.19"
 
   scaling_params = {
     worker = {
@@ -73,7 +74,7 @@ inputs = {
   k8s_project_name_prefix = local.project_prefix
   k8s_project_environment = local.project_environment
   k8s_cluster_name        = local.cluster_name
-  k8s_cluster_version     = "1.19"
+  k8s_cluster_version     = local.aws_cluster_version
   k8s_vpc_id              = dependency.networking.outputs.vpc_id
   k8s_subnet_ids          = dependency.networking.outputs.vpc_private_subnets
   k8s_cluster_tags        = local.project_tags
