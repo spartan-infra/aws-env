@@ -1,7 +1,7 @@
 resource "aws_security_group" "remote_security_group" {
   name        = local.security_group_name
   vpc_id      = var.instance_vpc_id
-  description = "Jump Server Security Group"
+  description = "Remote Access Security Group"
 
   dynamic "ingress" {
     for_each = local.port_mappings
