@@ -11,14 +11,6 @@ dependency "networking" {
   }
 }
 
-dependency "kubernetes" {
-  config_path = "../kubernetes"
-
-  mock_outputs = {
-    cluster_security_groups = ["", ""]
-  }
-}
-
 include {
   path = find_in_parent_folders()
 }
@@ -40,7 +32,6 @@ inputs = {
   instance_project_environment = local.project_environment
   instance_vpc_id              = dependency.networking.outputs.vpc_id
   instance_public_subnet_id    = dependency.networking.outputs.vpc_public_subnets
-  instance_security_group_ids  = dependency.kubernetes.outputs.cluster_security_groups
   instance_key_pair_name       = local.remote_access_key_name
   instance_additional_tags     = local.project_tags
   instance_type                = local.aws_instance_type

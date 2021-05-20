@@ -72,7 +72,19 @@ variable "k8s_cluster_tags" {
 }
 
 variable "k8s_write_kubernetes_configuration" {
-  description = "[REQUIRED] Write down to local the kubeconfig file."
+  description = "[OPTIONAL] Write down to local the kubeconfig file."
   type        = bool
   default     = true
+}
+
+variable "k8s_ssh_key_name" {
+  description = "[OPTIONAL] SSH Key pair name used for ssh connections"
+  type        = string
+  default     = ""
+}
+
+variable "k8s_remote_source_security_group_ids" {
+  description = "[OPTIONAL] Source security groups for remote access to workers. This is required only if k8s_ssh_key_name is provided"
+  type        = list(string)
+  default     = [""]
 }
