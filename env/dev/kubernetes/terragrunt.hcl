@@ -11,6 +11,14 @@ dependency "networking" {
   }
 }
 
+dependency "jump" {
+  config_path = "../jump"
+
+  mock_outputs = {
+    instance_remote_security_group_id = ""
+  }
+}
+
 include {
   path = find_in_parent_folders()
 }
@@ -19,13 +27,14 @@ locals {
   aws_region  = "us-east-2"
   aws_profile = "patagoniantraining"
 
-  global_vars         = read_terragrunt_config(find_in_parent_folders("global.hcl"))
-  project_environment = local.global_vars.locals.project_environment
-  project_prefix      = local.global_vars.locals.project_name_prefix
-  project_name        = local.global_vars.locals.project_name
-  project_tags        = local.global_vars.locals.project_tags
-  cluster_name        = local.global_vars.locals.eks_cluster_name
-  aws_cluster_version = "1.19"
+  global_vars            = read_terragrunt_config(find_in_parent_folders("global.hcl"))
+  project_environment    = local.global_vars.locals.project_environment
+  project_prefix         = local.global_vars.locals.project_name_prefix
+  project_name           = local.global_vars.locals.project_name
+  project_tags           = local.global_vars.locals.project_tags
+  cluster_name           = local.global_vars.locals.eks_cluster_name
+  aws_cluster_version    = "1.19"
+  remote_access_key_name = "ssh-key"
 
   scaling_params = {
     worker = {
@@ -70,13 +79,16 @@ EOF
 }
 
 inputs = {
-  k8s_project_name        = local.project_name
-  k8s_project_name_prefix = local.project_prefix
-  k8s_project_environment = local.project_environment
-  k8s_cluster_name        = local.cluster_name
-  k8s_cluster_version     = local.aws_cluster_version
-  k8s_vpc_id              = dependency.networking.outputs.vpc_id
-  k8s_subnet_ids          = dependency.networking.outputs.vpc_private_subnets
-  k8s_cluster_tags        = local.project_tags
-  k8s_worker_parameters   = local.scaling_params
+  k8s_project_name                      = local.project_name
+  k8s_project_name_prefix               = local.project_prefix
+  k8s_project_environment               = local.project_environment
+  k8s_cluster_name                      = local.cluster_name
+  k8s_cluster_version                   = local.aws_cluster_version
+  k8s_vpc_id                            = dependency.networking.outputs.vpc_id
+  k8s_subnet_ids                        = dependency.networking.outputs.vpc_private_subnets
+  k8s_cluster_tags                      = local.project_tags
+  k8s_worker_parameters                 = local.scaling_params
+  k8s_ssh_key_name                      = local.remote_access_key_name
+  k8s_remote_source_security_group_ids  = [dependency.jump.outputs.instance_remote_security_group_id]
+  k8s_worker_additional_security_groups = [dependency.jump.outputs.instance_remote_security_group_id]
 }

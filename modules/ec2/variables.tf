@@ -18,11 +18,6 @@ variable "instance_public_subnet_id" {
   type        = list(string)
 }
 
-variable "instance_security_group_ids" {
-  description = "[REQUIRED] EC2 instance security group ids"
-  type        = list(string)
-}
-
 variable "instance_key_pair_name" {
   description = "[REQUIRED] EC2 key pair used for remote access"
   type        = string
@@ -49,4 +44,10 @@ variable "instance_additional_ports" {
   description = "[OPTIONAL] EC2 additional service ports."
   type        = map(string)
   default     = {}
+}
+
+variable "instance_additional_security_group_ids" {
+  description = "[OPTIONAL] EC2 instance security group ids"
+  type        = list(string)
+  default     = []
 }

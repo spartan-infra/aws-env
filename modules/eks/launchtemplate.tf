@@ -2,6 +2,7 @@ resource "aws_launch_template" "cluster_launch_template" {
   name_prefix            = var.k8s_project_name_prefix
   description            = format("Launch-Template created for %s project", var.k8s_project_name)
   update_default_version = true
+  key_name               = var.k8s_ssh_key_name
 
   block_device_mappings {
     device_name = "/dev/xvda"
@@ -20,7 +21,7 @@ resource "aws_launch_template" "cluster_launch_template" {
   network_interfaces {
     associate_public_ip_address = false
     delete_on_termination       = true
-    security_groups             = [module.eks.worker_security_group_id]
+    security_groups             = concat([module.eks.worker_security_group_id], var.k8s_worker_additional_security_groups)
   }
 
   # Supplying custom tags to EKS instances is another use-case for LaunchTemplates
