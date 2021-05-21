@@ -33,6 +33,11 @@ variable "efs_cluster_security_group_ids" {
   type        = list(string)
 }
 
+variable "efs_vpc_id" {
+  description = "[REQUIRED] VPC ID where the EFS storage will be deployed."
+  type        = string
+}
+
 variable "efs_tags" {
   description = "[OPTIONAL] Resource tags."
   type        = map(string)

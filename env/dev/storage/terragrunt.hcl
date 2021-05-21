@@ -6,7 +6,8 @@ dependency networking {
   config_path = "../networking"
 
   mock_outputs = {
-    vpc_private_subnets = ""
+    vpc_id              = ""
+    vpc_private_subnets = ["", ""]
   }
 }
 
@@ -40,6 +41,7 @@ inputs = {
   efs_tags                       = local.project_tags
   efs_cluster_id                 = dependency.kubernetes.outputs.cluster_id
   efs_cluster_oidc_issuer_url    = dependency.kubernetes.outputs.cluster_oidc_provider_url
-  efs_cluster_subnet_ids         = dependency.networking.outputs.vpc_private_subnets
   efs_cluster_security_group_ids = dependency.kubernetes.outputs.cluster_security_groups
+  efs_cluster_subnet_ids         = dependency.networking.outputs.vpc_private_subnets
+  efs_vpc_id                     = dependency.networking.outputs.vpc_id
 }
