@@ -4,17 +4,17 @@ module "iam_assumable_role_admin" {
   create_role                   = true
   role_name                     = "loadbalancer-ingress-controller"
   provider_url                  = replace(module.eks.cluster_oidc_issuer_url, "https://", "")
-  role_policy_arns              = [aws_iam_policy.ingress-controller.arn]
+  role_policy_arns              = [aws_iam_policy.ingress_controller_policy.arn]
   oidc_fully_qualified_subjects = ["system:serviceaccount:${local.k8s_service_account_namespace}:${local.k8s_service_account_name}"]
 }
 
-resource "aws_iam_policy" "ingress-controller" {
+resource "aws_iam_policy" "ingress_controller_policy" {
   name_prefix = "ingress-controller"
   description = "EKS Loadbalancer Ingress Controller policy for cluster ${module.eks.cluster_id}"
-  policy      = data.aws_iam_policy_document.loadbalancer-ingress-policy.json
+  policy      = data.aws_iam_policy_document.ingress_controller_policy_document.json
 }
 
-data "aws_iam_policy_document" "loadbalancer-ingress-policy" {
+data "aws_iam_policy_document" "ingress_controller_policy_document" {
   version = "2012-10-17"
   statement {
     effect = "Allow"
