@@ -2,7 +2,7 @@ terraform {
   source = "../../..//modules/efs"
 }
 
-dependency networking {
+dependency "networking" {
   config_path = "../networking"
 
   mock_outputs = {

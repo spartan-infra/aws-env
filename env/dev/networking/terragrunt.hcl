@@ -25,7 +25,7 @@ locals {
   })
 
   vpc_base_ip   = "190.160.0.0"
-  vpc_base_mask = 24
+  vpc_base_mask = 23
   subnets_mask  = 26
 }
 
