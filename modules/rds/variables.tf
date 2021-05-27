@@ -20,7 +20,7 @@ variable "db_vpc_id" {
 
 variable "db_allowed_security_groups" {
   description = "[REQUIRED] Security groups needed to establish connections with the database"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "db_vpc_subnet_group_name" {

@@ -3,7 +3,7 @@ locals {
   aurora_db_parameter_group_name      = join("-", [local.aurora_rds_cluster_name, "aurora-db-57-parameter-group"])
   aurora_cluster_parameter_group_name = join("-", [local.aurora_rds_cluster_name, "aurora-57-cluster-parameter-group"])
 
-  aurora_db_param_group_description = format("Database Parameter Group created for %s project", var.db_project_name)
+  aurora_db_param_group_description      = format("Database Parameter Group created for %s project", var.db_project_name)
   aurora_cluster_param_group_description = format("Cluster Parameter Group created for %s project", var.db_project_name)
 
   rds_cluster_tags = merge({
