@@ -69,3 +69,9 @@ variable "vpc_private_subnet_tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "vpc_db_subnet_tags" {
+  description = "[OPTIONAL] Database subnet extra tags."
+  type        = map(string)
+  default     = {}
+}

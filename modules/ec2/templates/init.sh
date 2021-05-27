@@ -5,7 +5,7 @@ amazon-linux-extras install docker -y &&\
 service docker start &&\
 usermod -a -G docker ec2-user
 
-yum install -y https://dev.mysql.com/get/mysql80-community-release-el8-1.noarch.rpm
+yum install -y https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm
 yum install -y mysql-community-client
 
 mkdir -p /home/ec2-user/redis_cache &&\

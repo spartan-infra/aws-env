@@ -14,6 +14,11 @@ locals {
     cidrsubnet(local.vpc_cidr, local.cidrsubnet_newbits, 3)
   ]
 
+  vpc_database_subnets = [
+    cidrsubnet(local.vpc_cidr, local.cidrsubnet_newbits, 4),
+    cidrsubnet(local.vpc_cidr, local.cidrsubnet_newbits, 5)
+  ]
+
   vpc_tags = merge({
     Project     = var.vpc_project_name
     Environment = var.vpc_environment
@@ -34,4 +39,11 @@ locals {
     Description = "Private subnet created for standard project"
     Source      = "Managed by Terraform"
   }, var.vpc_private_subnet_tags)
+
+  database_subnet_tags = merge({
+    Project     = var.vpc_project_name
+    Environment = var.vpc_environment
+    Description = "Database subnet created for standard project"
+    Source      = "Managed by Terraform"
+  }, var.vpc_db_subnet_tags)
 }
