@@ -7,7 +7,7 @@ fmt:
 	terragrunt hclfmt
 
 init: fmt
-	terragrunt init
+	terragrunt init -upgrade
 	terragrunt get
 
 dry: init

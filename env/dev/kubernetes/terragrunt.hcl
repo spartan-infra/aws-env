@@ -24,8 +24,8 @@ include {
 }
 
 locals {
-  aws_region  = "us-east-2"
-  aws_profile = "patagoniantraining"
+  aws_region  = "us-east-1"
+  aws_profile = "wrdev"
 
   global_vars            = read_terragrunt_config(find_in_parent_folders("global.hcl"))
   project_environment    = local.global_vars.locals.project_environment
@@ -33,8 +33,8 @@ locals {
   project_name           = local.global_vars.locals.project_name
   project_tags           = local.global_vars.locals.project_tags
   cluster_name           = local.global_vars.locals.eks_cluster_name
-  aws_cluster_version    = "1.19"
-  remote_access_key_name = "ssh-key"
+  aws_cluster_version    = "1.21"
+  remote_access_key_name = "wr-ssh-key"
 
   scaling_params = {
     worker = {

@@ -1,10 +1,10 @@
 locals {
   project_environment = "dev"
-  project_name        = "standard-project"
-  eks_cluster_name    = "k8s-std"
-  project_name_prefix = "std"
+  project_name        = "wr-vv-project"
+  eks_cluster_name    = "k8s-wr-vv"
+  project_name_prefix = "wr-vv"
   project_tags = {
-    Owner   = "damian.bruera@patagonian.it"
-    Service = "Standard Project"
+    Owner   = "damian.bruera@xxxyyy.com"
+    Service = "wr-vv"
   }
 }

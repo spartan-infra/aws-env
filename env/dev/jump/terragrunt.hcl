@@ -22,7 +22,7 @@ locals {
   project_name           = local.global_vars.locals.project_name
   project_tags           = local.global_vars.locals.project_tags
   cluster_name           = local.global_vars.locals.eks_cluster_name
-  remote_access_key_name = "ssh-key"
+  remote_access_key_name = "wr-ssh-key"
   aws_instance_type      = "t2.micro"
 }
 
