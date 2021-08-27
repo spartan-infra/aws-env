@@ -3,12 +3,12 @@ terraform {
 }
 
 locals {
-  aws_region   = "us-east-2"
-  aws_profile  = "patagoniantraining"
-  project_name = "standard-project"
+  aws_region   = "us-east-1"
+  aws_profile  = "wrdev"
+  project_name = "wr-vv-project"
   project_tags = {
-    Owner   = "damian.bruera@patagonian.it"
-    Service = "Standard Project"
+    Owner   = "damian.bruera@xxxyyy.com"
+    Service = "wr-vv"
   }
   bucket_name    = "tfstate-std-store"
   table_name     = "tfstate-lock-table"

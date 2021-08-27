@@ -1,6 +1,6 @@
 locals {
-  aws_region             = "us-east-2"
-  aws_profile            = "patagoniantraining"
+  aws_region             = "us-east-1"
+  aws_profile            = "wrdev"
   remote_bucket_name     = "tfstate-std-store"
   remote_lock_table_name = "tfstate-lock-table"
 }
