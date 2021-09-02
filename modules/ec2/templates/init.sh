@@ -15,3 +15,14 @@ curl http://download.redis.io/redis-stable.tar.gz -o redis-stable.tar.gz &&\
 tar xvzf redis-stable.tar.gz &&\
 cd redis-stable &&\
 make
+
+yum -y update
+cat << 'EOF' > /etc/yum.repos.d/pgdg.repo
+[pgdg12]
+name=PostgreSQL 12 for RHEL/CentOS 7 - x86_64
+baseurl=https://download.postgresql.org/pub/repos/yum/12/redhat/rhel-7-x86_64
+enabled=1
+gpgcheck=0
+EOF
+yum makecache
+yum install -y postgresql12
