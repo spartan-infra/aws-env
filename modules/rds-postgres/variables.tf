@@ -76,7 +76,7 @@ variable "db_credentials" {
   type        = map(any)
   default = {
     creds = {
-      username = "admin"
+      username = "vruser"
       password = "Testing12345"
     }
   }
@@ -136,7 +136,7 @@ variable "db_additional_tags" {
   default     = {}
 }
 
-variable "allowed_security_groups" {
+variable "db_allowed_security_groups" {
   description = "[OPTIONAL] Allowed security groups"
   type        = list(string)
   default     = []

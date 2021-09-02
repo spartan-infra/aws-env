@@ -7,12 +7,12 @@ resource "aws_security_group" "postgres_security_group" {
 }
 
 resource "aws_security_group_rule" "default_ingress" {
-  count                    = length(var.allowed_security_groups)
+  count                    = length(var.db_allowed_security_groups)
   description              = "From allowed SGs"
   type                     = "ingress"
   from_port                = var.db_port
   to_port                  = var.db_port
   protocol                 = "tcp"
-  source_security_group_id = element(var.allowed_security_groups, count.index)
+  source_security_group_id = element(var.db_allowed_security_groups, count.index)
   security_group_id        = aws_security_group.postgres_security_group.id
 }
