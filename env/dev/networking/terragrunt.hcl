@@ -24,9 +24,9 @@ locals {
     "kubernetes.io/cluster/${local.cluster_name}" = "owned"
   })
 
-  vpc_base_ip   = "190.160.0.0"
-  vpc_base_mask = 23
-  subnets_mask  = 26
+  vpc_base_ip   = "10.0.0.0"
+  vpc_base_mask = 20
+  subnets_mask  = 23
 }
 
 inputs = {
