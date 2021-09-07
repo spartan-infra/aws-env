@@ -38,11 +38,10 @@ locals {
 
   scaling_params = {
     worker = {
-      instance_type = "c5.2xlarge"
-      //      instance_type    = "t2.medium"
-      min_capacity     = 1
-      desired_capacity = 1
-      max_capacity     = 2
+      instance_type = "r5.2xlarge"
+      min_capacity     = 2
+      desired_capacity = 3
+      max_capacity     = 6
       monitoring       = true
     }
   }
