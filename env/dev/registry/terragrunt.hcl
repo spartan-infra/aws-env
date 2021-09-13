@@ -14,7 +14,8 @@ locals {
 
   api_names = [
     "container-operator",
-    "automation-sla-monitoring-develop"
+    "automation-sla-monitoring-develop",
+    "metrics-batch"
   ]
 }
 
