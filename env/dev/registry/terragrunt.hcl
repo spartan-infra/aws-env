@@ -13,9 +13,9 @@ locals {
   project_tags        = local.global_vars.locals.project_tags
 
   api_names = [
-    "api-gateway",
-    "api-inventory",
-    "api-tis"
+    "container-operator",
+    "automation-sla-monitoring-develop",
+    "metrics-batch"
   ]
 }
 

@@ -38,7 +38,7 @@ locals {
 
   scaling_params = {
     worker = {
-      instance_type = "r5.2xlarge"
+      instance_type    = "r5.2xlarge"
       min_capacity     = 2
       desired_capacity = 3
       max_capacity     = 6
@@ -59,8 +59,9 @@ provider "aws" {
 
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.eks_cluster.endpoint
-  cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks_cluster.certificate_authority[0].data)
+  cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks_cluster.certificate_authority.0.data)
   token                  = data.aws_eks_cluster_auth.eks_cluster_auth.token
+  load_config_file       = false
 }
 
 terraform {
@@ -68,10 +69,8 @@ terraform {
   required_providers {
     aws        = ">= 3.22.0"
     local      = ">= 1.4"
-    null       = ">= 2.1"
-    template   = ">= 2.1"
     random     = ">= 2.1"
-    kubernetes = ">= 2.0.0"
+    kubernetes = "~> 1.11"
   }
 }
 EOF
