@@ -1,5 +1,5 @@
 module "db" {
-  source = "terraform-aws-modules/rds-aurora/aws"
+  source = "registry.terraform.io/terraform-aws-modules/rds-aurora/aws"
 
   name                  = local.aurora_rds_cluster_name
   engine                = var.db_engine

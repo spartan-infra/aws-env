@@ -3,7 +3,7 @@ data "aws_availability_zones" "azs" {
 }
 
 module "vpc" {
-  source = "terraform-aws-modules/vpc/aws"
+  source = "registry.terraform.io/terraform-aws-modules/vpc/aws"
 
   name = local.vpc_name
   cidr = local.vpc_cidr
