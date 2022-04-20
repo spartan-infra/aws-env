@@ -1,5 +1,5 @@
 module "db" {
-  source = "terraform-aws-modules/rds/aws"
+  source = "registry.terraform.io/terraform-aws-modules/rds/aws"
 
   identifier = local.db_identifier
 

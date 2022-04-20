@@ -1,5 +1,5 @@
 module "eks" {
-  source                               = "terraform-aws-modules/eks/aws"
+  source                               = "registry.terraform.io/terraform-aws-modules/eks/aws"
   cluster_name                         = var.k8s_cluster_name
   cluster_version                      = var.k8s_cluster_version
   vpc_id                               = var.k8s_vpc_id
