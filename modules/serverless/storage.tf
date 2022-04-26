@@ -28,16 +28,16 @@ resource "aws_s3_bucket_public_access_block" "sls_bucket_access_block" {
 }
 
 data "archive_file" "lambda_golang_src" {
-  output_path = "${path.module}/bin.zip"
-  source_dir = "${path.module}/bin"
+  output_path = "${path.module}/sls-go-test.zip"
+  source_dir  = "${path.module}/.app"
 
-  type        = "zip"
+  type = "zip"
 }
 
 resource "aws_s3_object" "lambda_golang" {
   bucket = aws_s3_bucket.sls_bucket_code.id
 
-  key    = "bin.zip"
+  key    = "sls-go-test.zip"
   source = data.archive_file.lambda_golang_src.output_path
 
   etag = filemd5(data.archive_file.lambda_golang_src.output_path)
