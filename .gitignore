@@ -12,6 +12,7 @@
 *.tfstate.*
 *.out.*
 *.out
+*tfplan*
 
 # Input files
 **/*.tfvars
